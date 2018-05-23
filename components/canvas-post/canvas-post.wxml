@@ -1,0 +1,4 @@
+<view class="post-wrap">
+  <canvas canvas-id="postCanvas" class="post-canvas"/>
+  <view bind:tap="saveImage" class="btn-download"><button>保存</button></view>
+</view>

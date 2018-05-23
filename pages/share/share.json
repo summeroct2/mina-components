@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "生成分享海报图",
+  "usingComponents": {
+    "canvas-post": "/components/canvas-post/canvas-post"
+  }
+}

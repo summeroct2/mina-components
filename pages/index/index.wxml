@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="container">
+  <navigator url="/pages/share/share">生成朋友圈分享海报</navigator>
+</view>
