@@ -12,6 +12,6 @@
 
 .btn-download {
   position: absolute;
-  bottom: 20rpx;
-  width: 90%;
+  bottom: 0;
+  width: 100%;
 }

@@ -6,11 +6,9 @@ Page({
    */
   data: {
     canvasInfo: {
-      title: '魅蓝 E3 歼-20定制限量版',
-      desc: '疾速八核 全系6GB运存',
-      price: 1999,
-
-      img: 'https://openfile.meizu.com/group1/M00/03/BB/Cgbj0Vq9-mKAAe8eAAQt_ZthncE382.png',
+      title: '魅蓝 6T',
+      desc: '奖品为魅蓝6T 新品M码，颜色版本随机，奖品共50个。本次拼团商品为新品M码的抽奖资格。',
+      img: 'https://openfile.meizu.com/group1/M00/04/85/Cgbj0VsGFz2AFcvvAAD2cVPocuU812.jpg',
       qrcode: 'https://openfile.meizu.com/group1/M00/03/F9/Cgbj0VrPCDyAeqh-AAEILmqVv5w454.jpg',
       logo: ''
     }

@@ -14,28 +14,46 @@ Component({
 
     wx.getSystemInfo({
       success: res => {
-        let w = res.windowWidth
-        let h = res.windowHeight
 
-        var scale2x = w / 750
+        const windowWidth = res.windowWidth
+        const windowHeight = res.windowHeight
+
+        // 根据视觉稿宽度与视图宽度比，计算缩放比例
+        const autoScale = (val) => {
+          return val * ( windowWidth / 750)
+        }
 
         console.log('getSystemInfo:', pageData.canvasInfo)
+        console.log('can i use measureText', wx.canIUse('canvasContext.measureText'))
 
         // 下载图片 -> 绘制
         wx.downloadFile({
           url: pageData.canvasInfo.img,
           success: res => {
-            console.log('getImageInfo:', res)
 
-            ctx.drawImage(res.tempFilePath, 0, 0, w, h)
+            wx.getImageInfo({
+              src: res.tempFilePath,
+              success: res2 => {
+                console.log('getImageInfo:', res2)
 
-            console.log('can i use measureText', wx.canIUse('canvasContext.measureText'))
+                // 根据图片宽度缩放到视窗，计算适配高度
+                const imgHeight = windowWidth * res2.height / res2.width
 
-            ctx.setFontSize(28 * scale2x)
-            ctx.setFillStyle('#ff0000')
-            this.fillTextAutoBreak(ctx, '对制造商们来说最关心的就是找到一种新方法，在保证产品end', 20 * scale2x, h - 120, 100)
+                ctx.drawImage(res.tempFilePath, 0, 0, windowWidth, imgHeight)
 
-            ctx.draw()
+                ctx.setFontSize(autoScale(32))
+                ctx.setFillStyle('#333333')
+                this.fillTextAutoBreak(ctx, pageData.canvasInfo.title, autoScale(20), imgHeight + 40, autoScale(400))
+
+                ctx.setFontSize(autoScale(28))
+                ctx.setFillStyle('#999999')
+                this.fillTextAutoBreak(ctx, pageData.canvasInfo.desc, autoScale(20), imgHeight + 60, autoScale(400))
+
+                ctx.drawImage(pageData.canvasInfo.qrcode, autoScale(480), imgHeight + 20, autoScale(200), autoScale(200))
+
+                ctx.draw()
+              }
+            })
           }
         })
       }
